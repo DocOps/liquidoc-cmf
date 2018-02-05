@@ -1,18 +1,18 @@
 = LiquiDoc CMF
 
 This repo contains the boilerplate files for, and rudimentary documentation of, a content mamanagement framework (CMF) for combining open-source tools and workflows for documentation management.
-LiquiDoc CMF (LDCMF) incorporates two excellent lightweight markup languages (AsciiDoc and YAML) with open-source build and publish utilities (Git, Asciidoctor, Jekyll, Travis CI, and many others) using a wrapper tool called LiquiDoc.
+LiquiDoc CMF (LDCMF) incorporates two excellent lightweight markup languages (link:http://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] and link:https://github.com/darvid/trine/wiki/YAML-Primer[YAML]) with open-source build and publish utilities (link:https://git-scm.com/book/en/v2/Getting-Started-Git-Basics[Git], link:http://asciidoctor.org/[Asciidoctor], link:http://idratherbewriting.com/2015/02/27/static-site-generators-start-to-displace-online-cmss/[static site generators], build and deployment tools, and many others) using a wrapper utility called link:[*LiquiDoc*].
 This creates a truly open, highly portable system for developing and maintaining docs code the way programmers develop and maintain product code.
-
-[WARNING]
-This file (`README.adoc`) is the README for the generic LiquiDoc CMF project bootstrap repository.
-To avoid confusion, move or delete this file after running the quickstart, which generates a proper `README.adoc` for your actual docs project/directory.
 
 == Usage
 
 Complete documentation for LDCMF is still being developed.
 
 === Quickstart
+
+[WARNING]
+This file (`README.adoc`) is the README for the generic LiquiDoc CMF project bootstrap repository.
+To avoid confusion, move/rename or delete this file after running the quickstart, which generates a proper `README.adoc` for your actual docs project/directory.
 
 If you have Git and Ruby runtime installed, you can get going with LiquiDoc CMF in a few quick steps.
 
