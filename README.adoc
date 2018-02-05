@@ -8,13 +8,17 @@ This creates a truly open, highly portable system for developing and maintaining
 
 Complete documentation for LDCMF is still being developed.
 
+The following procedure is a *bootstrapping operation* to get an _actual LDCMF project* started.
+It further sets up initial files based on custom preferences.
+The newly generated `README.adoc` instructs future users to set up and use your docs.
+
 === Quickstart
 
 [WARNING]
 This file (`README.adoc`) is the README for the generic LiquiDoc CMF project bootstrap repository.
 To avoid confusion, move/rename or delete this file after running the quickstart, which generates a proper `README.adoc` for your actual docs project/directory.
 
-If you have Git and Ruby runtime installed, you can get going with LiquiDoc CMF in a few quick steps.
+If you have link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[Git] and link:https://www.ruby-lang.org/en/downloads/[Ruby runtime] installed, you can get going with LiquiDoc CMF in a few quick steps.
 
 . Clone this repo.
 +
@@ -78,6 +82,8 @@ bundle exec liquidoc -c _init/init.yml
 . Delete or move the `README.meta.adoc` file (this file) and the `_init/` directory, which you will no longer need.
 
 Further instructions are in your new README!
+The new README file is oriented for your project's future users, so you don't need to repeat setup steps.
+Just run your first build.
 
 == Structure
 
