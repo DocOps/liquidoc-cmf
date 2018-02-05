@@ -16,7 +16,7 @@ The newly generated `README.adoc` instructs future users to set up and use your 
 
 [WARNING]
 This file (`README.adoc`) is the README for the generic LiquiDoc CMF project bootstrap repository.
-To avoid confusion, move/rename or delete this file after running the quickstart, which generates a proper `README.adoc` for your actual docs project/directory.
+If you wish to keep this file, move/rename it _before_ running the quickstart, which generates a proper `README.adoc` for your actual docs project/directory, which this directory and its contents then becomes.
 
 If you have link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[Git] and link:https://www.ruby-lang.org/en/downloads/[Ruby runtime] installed, you can get going with LiquiDoc CMF in a few quick steps.
 
