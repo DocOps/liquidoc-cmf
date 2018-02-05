@@ -105,6 +105,9 @@ README.adoc
 Gemfile
 ----
 
+[NOTE]
+Empty directories (ex., `src/assets/`) must be manually added.
+
 == Contributing
 
 This is an open source project that is eager for contributions and feedback.
