@@ -1,14 +1,14 @@
 = LiquiDoc CMF
 
 This repo contains the boilerplate files for, and rudimentary documentation of, a content mamanagement framework (CMF) for combining open-source tools and workflows for documentation management.
-LiquiDoc CMF (LDCMF) incorporates two excellent lightweight markup languages (link:http://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] and link:https://github.com/darvid/trine/wiki/YAML-Primer[YAML]) with open-source build and publish utilities (link:https://git-scm.com/book/en/v2/Getting-Started-Git-Basics[Git], link:http://asciidoctor.org/[Asciidoctor], link:http://idratherbewriting.com/2015/02/27/static-site-generators-start-to-displace-online-cmss/[static site generators], build and deployment tools, and many others) using a wrapper utility called link:[*LiquiDoc*].
+LiquiDoc CMF (LDCMF) incorporates two excellent lightweight markup languages (link:http://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] and link:https://github.com/darvid/trine/wiki/YAML-Primer[YAML]) with open-source build and publish utilities (link:https://git-scm.com/book/en/v2/Getting-Started-Git-Basics[Git], link:http://asciidoctor.org/[Asciidoctor], link:http://idratherbewriting.com/2015/02/27/static-site-generators-start-to-displace-online-cmss/[static site generators], build and deployment tools, and many others) using a wrapper utility called link:https://github.com/briandominick/liquidoc-gem[*LiquiDoc*].
 This creates a truly open, highly portable system for developing and maintaining docs code the way programmers develop and maintain product code.
 
 == Usage
 
 Complete documentation for LDCMF is still being developed.
 
-The following procedure is a *bootstrapping operation* to get an _actual LDCMF project* started.
+The following procedure is a *bootstrapping operation* to get an _actual LDCMF project_ started.
 It further sets up initial files based on custom preferences.
 The newly generated `README.adoc` instructs future users to set up and use your docs.
 
