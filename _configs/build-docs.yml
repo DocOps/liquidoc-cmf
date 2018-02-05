@@ -1,0 +1,20 @@
+# Move critical files to the temporary build directory
+- action: migrate
+  source: src
+  target: build
+  options:
+    inclusive: false # Duplicate the files without the src/ dir
+- action: migrate
+  source: theme
+  target: build
+- action: render
+  data: _data/meta.yml
+  builds:
+  - output: src/includes/built/company_info.adoc
+    template: _templates/liquid/init/init_company-info.asciidoc
+# Render your publication with Asciidoctor
+- action: render
+  source: build/index.adoc
+  data: _configs/asciidoctor.yml
+  builds:
+  - output: build/output/docs.html

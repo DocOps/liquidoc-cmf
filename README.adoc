@@ -1,0 +1,111 @@
+= LiquiDoc CMF
+
+This repo contains the boilerplate files for, and rudimentary documentation of, a content mamanagement framework (CMF) for combining open-source tools and workflows for documentation management.
+LiquiDoc CMF (LDCMF) incorporates two excellent lightweight markup languages (AsciiDoc and YAML) with open-source build and publish utilities (Git, Asciidoctor, Jekyll, Travis CI, and many others) using a wrapper tool called LiquiDoc.
+This creates a truly open, highly portable system for developing and maintaining docs code the way programmers develop and maintain product code.
+
+[WARNING]
+This file (`README.adoc`) is the README for the generic LiquiDoc CMF project bootstrap repository.
+To avoid confusion, move or delete this file after running the quickstart, which generates a proper `README.adoc` for your actual docs project/directory.
+
+== Usage
+
+Complete documentation for LDCMF is still being developed.
+
+=== Quickstart
+
+If you have Git and Ruby runtime installed, you can get going with LiquiDoc CMF in a few quick steps.
+
+. Clone this repo.
++
+[subs="quotes"]
+----
+git clone git@github.com:DocOps/liquidoc-cmf.git *docs_dir*
+----
++
+Change `docs_dir` to the directory name you want to give this directory.
+
+. Change to the project directory.
++
+.Example
+----
+cd my_docs
+----
+
+. Re-associate your files with the proper repository.
+
+.. _If this project is its own Git repo_, change the project's remote origin Git repository.
++
+----
+git remote set-url origin git://github.com:your-project/your-repo-name.git
+----
++
+Replace this URI with your own.
+
+.. _If this project is part of a parent directory's Git repo_, remove local Git files.
++
+----
+rm -rf .git
+----
+
+. Run Bundler to install dependencies.
++
+----
+bundle install
+----
++
+If Bundler is not installed, run `gem install bundler`, then repeat this command.
+
+. Rename this README so _init_ does not overwrite it.
++
+.Example
+----
+mv README.adoc README.meta.adoc
+----
+
+. Edit your project metafile.
++
+In your favorite text/code editor, open `_data/meta.yml` and fill out the required info, then *save the file*.
+
+. Run LiquiDoc with the LDCMF initialization config.
++
+----
+bundle exec liquidoc -c _init/init.yml
+----
+
+. You can now review and edit your `README.adoc` and `src/index.adoc` files with custom content.
+
+. Delete or move the `README.meta.adoc` file (this file) and the `_init/` directory, which you will no longer need.
+
+Further instructions are in your new README!
+
+== Structure
+
+This is the basic file directory structure of an initial LiquiDoc CMF project).
+
+[source]
+----
+liquidoc-cmf/
+├── _configs/
+│   ├── asciidoctor.yml
+│   └── build-docs.yml
+├── _data/
+│   └── meta.yml
+├── _templates/
+│   └── liquid/
+│       └── company.asciidoc
+├── src/
+│   ├── assets/
+│   ├── includes/
+│   ├── portal/
+│   ├── topics/
+│   └── index.adoc
+└── theme/
+README.adoc
+Gemfile
+----
+
+== Contributing
+
+This is an open source project that is eager for contributions and feedback.
+More soon.

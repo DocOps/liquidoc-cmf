@@ -1,0 +1,48 @@
+= {{common_name}} Documentation
+
+This documentation {{space_type}} uses a docs-as-code framework called link:https://github.com/briandominick/liquidoc-cmf[LiquiDoc CMF].
+Check it out for full instructions and links to demo projects.
+
+== Overview
+
+This is just a boilerplate stub to get you up and going.
+Describe your documentation project here.
+
+== Quickstart
+{% if space_type == "repo" %}
+. Clone this repo.
++
+....
+git clone {{ git_repo_uri }}
+....
+{% endif %}
+. Change to the proper directory.
++
+....
+cd {% if project_root %}{{ project_root }}{% else %}my_project{% endif %}{% if space_type == "directory" %}/{{ docs_root_path }}{% endif %}
+....
+
+. Run Bundler to install dependencies.
++
+....
+bundle install
+....
++
+If Bundler is not installed, run `gem install bundler`, then repeat this command.
+
+. Run your first docs build.
++
+....
+bundle exec liquidoc -c _configs/build.yml
+....
+
+=== Requirements
+
+. Ruby runtime environment
+. Bundler package management for Ruby
+
+== Build
+
+To build, run `bundle exec liquidoc -c _config/build-docs.yml`.
+
+Check out the results in `build/output/`.

@@ -1,0 +1,23 @@
+company_name_official: We Make Code, Inc #REQUIRED
+company_name_short: WEEEMC #REQUIRED (Can duplicate official)
+product_common_name: BoxOdox #REQUIRED This is effectively the title of this docs project
+git_repo_uri: git@github.com:DocOps/liquidoc-cmf.git #REQUIRED A proper git@ address like git@github.com:DocOps/liquidoc-cmf.git
+space_type: repo #REQUIRED |
+# Use 'directory' if part of a larger product repo
+# Use 'repo' if docs are the whole repo
+project_root: # The name of the root project directory, relative to the clone point
+docs_root_path: # The relative path to docs dir relative to the project_root_path
+# Leave docs_root_path blank if the space_type is 'repo'
+
+company_address_street:
+company_address_city:
+company_address_state:
+company_address_zipcode:
+git_repo_web_url: # The URL of your GitHub or other interface
+
+products: # leave this field blank
+  - name: # the name of the first product documented in this repo
+    slug: # lowercase alphanumeric and hyphens (-) only, ex. super-saas-premium
+# Remove the leftmost # marks on subsequent lines to activate a new product record
+#  - name: # the name of the second product
+#    tagline: # a short description of the second product
