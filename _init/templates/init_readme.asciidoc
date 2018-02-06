@@ -1,4 +1,4 @@
-= {{common_name}} Documentation
+= {{product_common_name}} Documentation
 
 This documentation {{space_type}} uses a docs-as-code framework called link:https://github.com/briandominick/liquidoc-cmf[LiquiDoc CMF].
 Check it out for full instructions and links to demo projects.
