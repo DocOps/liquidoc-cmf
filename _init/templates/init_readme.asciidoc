@@ -33,7 +33,7 @@ If Bundler is not installed, run `gem install bundler`, then repeat this command
 . Run your first docs build.
 +
 ....
-bundle exec liquidoc -c _configs/build.yml
+bundle exec liquidoc -c _configs/build-docs.yml
 ....
 
 === Requirements

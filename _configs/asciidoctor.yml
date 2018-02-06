@@ -1,2 +1,2 @@
 # This file contains global Asciidoctor attributes
-imagesdir: theme/images
+imagesdir: assets/images

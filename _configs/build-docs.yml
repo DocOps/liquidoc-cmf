@@ -7,11 +7,11 @@
 - action: migrate
   source: theme
   target: build
-- action: render
+- action: parse
   data: _data/meta.yml
   builds:
-  - output: src/includes/built/company_info.adoc
-    template: _templates/liquid/init/init_company-info.asciidoc
+  - output: src/includes/built/company-info.adoc
+    template: _templates/liquid/company-info.asciidoc
 # Render your publication with Asciidoctor
 - action: render
   source: build/index.adoc
