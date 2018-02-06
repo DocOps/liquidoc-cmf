@@ -33,7 +33,7 @@ Replace `docs_dir` with the directory name you want to give this directory.
 +
 .Example
 ----
-cd my_docs
+cd docs_dir
 ----
 
 . Re-associate your files with the proper repository.
