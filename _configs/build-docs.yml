@@ -10,7 +10,7 @@
 - action: parse
   data: _data/meta.yml
   builds:
-  - output: src/includes/built/company-info.adoc
+  - output: build/includes/built/company-info.adoc
     template: _templates/liquid/company-info.asciidoc
 # Render your publication with Asciidoctor
 - action: render
@@ -18,3 +18,5 @@
   data: _configs/asciidoctor.yml
   builds:
   - output: build/output/docs.html
+    properties:
+      files: _data/meta.yml
