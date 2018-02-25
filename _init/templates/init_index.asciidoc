@@ -2,4 +2,4 @@
 
 == Maker Info
 
-include::includes/built/company-info.adoc[]
+include::includes/_built_company-info.adoc[]

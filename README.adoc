@@ -8,15 +8,18 @@ This creates a truly open, highly portable system for developing and maintaining
 
 Complete documentation for LDCMF is still being developed.
 
+This project exhibits a *bootstrapped framework*.
+It is a standardized approach to initiating an AsciiDoc-based docs-as-code project, including an initial file structure and starter files.
+
+=== Quickstart
+
 The following procedure is a *bootstrapping operation* to get an _actual LDCMF project_ started.
 It further sets up initial files based on custom preferences.
 The newly generated `README.adoc` instructs future users to set up and use your docs.
 
-=== Quickstart
-
 [WARNING]
 This file (`README.adoc`) is the README for the generic LiquiDoc CMF project bootstrap repository.
-If you wish to keep this file, move/rename it _before_ running the quickstart, which generates a proper `README.adoc` for your actual docs project/directory, which this directory and its contents then becomes.
+If you wish to keep this file, move/rename it _before_ running the quickstart, which generates a proper `README.adoc` for your actual docs project/directory, which this directory and its contents then _becomes_.
 
 If you have link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[Git] and link:https://www.ruby-lang.org/en/downloads/[Ruby runtime] installed, you can get going with LiquiDoc CMF in a few quick steps.
 
@@ -38,7 +41,7 @@ cd docs_dir
 
 . Re-associate your files with the proper repository.
 
-.. _If this project is its own Git repo_, change the project's remote origin Git repository.
+.. _If your docs project is its own Git repo_, change the project's remote origin Git repository.
 +
 ----
 git remote set-url origin git://github.com:your-project/your-repo-name.git
@@ -46,16 +49,19 @@ git remote set-url origin git://github.com:your-project/your-repo-name.git
 +
 Replace this URI with your own.
 
-.. _If this project is part of a parent directory's Git repo_, remove local Git files.
+.. _If your docs project is part of a parent directory's Git repo_, remove local Git files.
 +
 ----
 rm -rf .git
 ----
++
+Now all new files should fall under the parent Git scope.
+Try `git status` to check.
 
 . Run Bundler to install dependencies.
 +
 ----
-bundle install
+bundle
 ----
 +
 If Bundler is not installed, run `gem install bundler`, then repeat this command.
@@ -69,7 +75,7 @@ mv README.adoc README.meta.adoc
 
 . Edit your project metafile.
 +
-In your favorite text/code editor, open `_data/meta.yml` and fill out the required info, then *save the file*.
+In your favorite text/code editor, open `data/meta.yml` and fill out the required info, then *save the file*.
 
 . Run LiquiDoc with the LDCMF initialization config.
 +
@@ -77,7 +83,7 @@ In your favorite text/code editor, open `_data/meta.yml` and fill out the requir
 bundle exec liquidoc -c _init/init.yml
 ----
 
-. You can now review and edit your `README.adoc` and `src/index.adoc` files with custom content.
+. You can now review and edit your `README.adoc` and `content/index.adoc` files with custom content.
 
 . Delete or move the `README.meta.adoc` file (this file) and the `_init/` directory, which you will no longer need.
 
@@ -95,15 +101,15 @@ liquidoc-cmf/
 ├── _configs/
 │   ├── asciidoctor.yml
 │   └── build-docs.yml
-├── _data/
+├── data/
 │   └── meta.yml
 ├── _templates/
 │   └── liquid/
 │       └── company.asciidoc
-├── src/
+├── content/
 │   ├── assets/
 │   ├── includes/
-│   ├── portal/
+│   ├── pages/
 │   ├── topics/
 │   └── index.adoc
 └── theme/
@@ -112,7 +118,7 @@ Gemfile
 ----
 
 [NOTE]
-Empty directories (ex., `src/assets/`) must be manually added.
+Empty directories (ex., `content/assets/`) must be manually added.
 
 == Contributing
 
