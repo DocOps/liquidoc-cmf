@@ -1,12 +1,12 @@
 # Move critical files to the temporary build directory
 - action: migrate
-  source: src
-  target: _build
+  source: content/
+  target: _build/
   options:
     inclusive: false # Duplicate the files without the content/ dir
 - action: migrate
-  source: theme
-  target: build
+  source: theme/
+  target: build/
 - action: parse
   data: data/meta.yml
   builds:
