@@ -1,8 +1,8 @@
 - action: parse
   data:
-    file: _data/meta.yml
+    file: data/meta.yml
   builds:
     - output: README.adoc
       template: _init/templates/init_readme.asciidoc
-    - output: src/index.adoc
+    - output: content/index.adoc
       template: _init/templates/init_index.asciidoc

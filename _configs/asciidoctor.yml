@@ -1,2 +1,4 @@
 # This file contains global Asciidoctor attributes
 imagesdir: assets/images
+safe: 0
+icons: font
