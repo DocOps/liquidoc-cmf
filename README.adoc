@@ -8,14 +8,8 @@ This creates a truly open, highly portable system for developing and maintaining
 
 Complete documentation for LDCMF is still being developed.
 
-This project exhibits a *bootstrapped framework*.
-It is a standardized approach to initiating an AsciiDoc-based docs-as-code project, including an initial file structure and starter files.
-
-=== Quickstart
-
-The following procedure is a *bootstrapping operation* to get an _actual LDCMF project_ started.
+The following procedure is a *bootstrapping operation* to get an _actual LDCMF-based project_ started.
 It further sets up initial files based on custom preferences.
-The newly generated `README.adoc` instructs future users to set up and use your docs.
 
 [WARNING]
 This file (`README.adoc`) is the README for the generic LiquiDoc CMF project bootstrap repository.
@@ -26,6 +20,7 @@ If you have link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[G
 . Clone this repo.
 +
 [subs="quotes"]
+.Example
 ----
 git clone git@github.com:DocOps/liquidoc-cmf.git *docs_dir*
 ----
@@ -49,14 +44,13 @@ git remote set-url origin git://github.com:your-project/your-repo-name.git
 +
 Replace this URI with your own.
 
-.. _If your docs project is part of a parent directory's Git repo_, remove local Git files.
+.. _If your docs project is part of a parent directory's Git repo_, remove local Git files so your new docs source will be absorbed into the parent repo.
 +
 ----
 rm -rf .git
 ----
 +
-Now all new files should fall under the parent Git scope.
-Try `git status` to check.
+Now your new directory/files will appear as uncommitted additions to the parent project (`git status`).
 
 . Run Bundler to install dependencies.
 +
@@ -64,7 +58,7 @@ Try `git status` to check.
 bundle
 ----
 +
-If Bundler is not installed, run `gem install bundler`, then repeat this command.
+If an error indicates Bundler is not installed, run `gem install bundler`, then repeat this command.
 
 . Rename this README so _init_ does not overwrite it.
 +
@@ -72,6 +66,8 @@ If Bundler is not installed, run `gem install bundler`, then repeat this command
 ----
 mv README.adoc README.meta.adoc
 ----
++
+This file may confuse future users; we advise removing it before sharing your LDCMF project.
 
 . Edit your project metafile.
 +
@@ -82,13 +78,15 @@ In your favorite text/code editor, open `data/meta.yml` and fill out the require
 ----
 bundle exec liquidoc -c _init/init.yml
 ----
++
+This procedure customizes a few starter files based on `meta.yml`.
 
-. You can now review and edit your `README.adoc` and `content/index.adoc` files with custom content.
+. You can now review your `README.adoc` and `content/index.adoc` files, editing and populating them with custom content.
 
 . Delete or move the `README.meta.adoc` file (this file) and the `_init/` directory, which you will no longer need.
 
 Further instructions are in your new README!
-The new README file is oriented for your project's future users, so you don't need to repeat setup steps.
+The new README file is oriented for your project's future users (and you!), so you don't need to repeat setup steps.
 Just run your first build.
 
 == Structure
