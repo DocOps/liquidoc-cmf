@@ -1,0 +1,7 @@
+- slug: {{vars.slug}}
+  {%- if vars.title %}
+  title: {{vars.title}}
+  {%- endif -%}
+  {%- if vars.parent %}
+  subtopics:
+  {% endif -%}

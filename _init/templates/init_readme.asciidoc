@@ -1,48 +1,66 @@
-= {{product_common_name}} Documentation
-
-This documentation {{space_type}} uses a docs-as-code framework called link:https://github.com/briandominick/liquidoc-cmf[LiquiDoc CMF].
-Check it out for full instructions and links to demo projects.
+= {{ product_suite_name }} Documentation
+// This AsciiDoc file must be rendered to be properly viewed.
+// The easiest way to view it rendered is on GitHub at
+// https://github.com/DocOps/liquidoc-cmf
+// OR copy and paste these contents into
+// https://asciidoclive.com
+// BELOW is all AsciiDoc formatting:
+// https://asciidoctor.org/docs/what-is-asciidoc/
+//
+// Document attributes (variables)
+:docs_build_command_basic: bundle exec liquidoc -c {{ project_config_dir }}/{{ project_config_file }}
+//
+// Document content
+This documentation {{ space_type }} uses a docs-as-code framework called link:https://www.ajyl.org/liquidoc-cmf[LiquiDoc CMF].
 
 == Overview
 
 This is just a boilerplate stub to get you up and going.
 Describe your documentation project here.
 
-== Quickstart
-{% if space_type == "repo" %}
-. Clone this repo.
-+
-....
-git clone {{ git_repo_uri }}
-....
-{% endif %}
-. Change to the proper directory.
-+
-....
-cd {% if project_root %}{{ project_root }}{% else %}my_project{% endif %}{% if space_type == "directory" %}/{{ docs_root_path }}{% endif %}
-....
-
-. Run Bundler to install dependencies.
-+
-....
-bundle install
-....
-+
-If Bundler is not installed, run `gem install bundler`, then repeat this command.
-
-. Run your first docs build.
-+
-....
-bundle exec liquidoc -c _configs/build-docs.yml
-....
+== Docs Build
 
 === Requirements
 
 . Ruby runtime environment
 . Bundler package management for Ruby
 
-== Build
+=== Quickstart
 
-To build, run `bundle exec liquidoc -c _configs/build-docs.yml`.
+This will get you up and running with our docs!
 
-Check out the results in `_build/output/`.
+==== Installation
+
+{% if space_type == "repo" %}
+. Clone this repo.
++
+[source,shell]
+----
+git clone {{ project_git_repo_origin_uri }} {{ project_root_dir }}
+----
+{% endif %}
+
+. Change to the proper working directory.
++
+[source,shell]
+----
+cd {{ project_root_dir }}{%if subj_rel == "folder" %}/{{ docs_root_path }}{% endif %}
+----
+
+. Run Bundler to install dependencies.
++
+[source,shell]
+----
+bundle
+----
++
+If Bundler is not installed, run `gem install bundler`, then repeat this command.
+
+==== Generation
+
+[source,shell,subs="+attributes"]
+----
+{docs_build_command_basic}
+----
+
+This procedure generates files in the `_build/docs/` directory.

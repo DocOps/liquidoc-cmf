@@ -1,3 +1,5 @@
 {company_name_official} +
 {company_address_street} +
 {company_address_city}, {company_address_state} {company_address_zipcode}
+
+image::company_logo_big.png[]

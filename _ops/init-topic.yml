@@ -1,0 +1,41 @@
+{%- assign slug_regex = "[a-z_\-]{7,50}" -%}
+{%- assign slug_regex_esc = "[a-z_\-]\{7,50\}" -%}
+{%- if vars.slug -%}
+  {%- assign slug_valid = vars.slug | regexreplace: slug_regex, "valid" -%}
+  {%- if slug_valid == "valid" -%}
+- action: parse
+  builds:
+    - template: _templates/liquid/ops/topic.asciidoc
+      output: content/topics/{{vars.slug}}.adoc
+      variables:
+        slug: {{vars.slug}}
+    {%- if vars.parent %}
+        parent: true
+    {% endif %}
+    - template: _templates/liquid/ops/topic-entry.yaml
+      output: stdout
+      variables:
+        slug: {{vars.slug}}
+    {%- if vars.title %}
+        title: {{vars.title}}
+    {% endif -%}
+    {%- if vars.parent %}
+        parent: {{vars.parent}}
+    {% endif -%}
+  {%- else -%}
+- action: parse
+  builds:
+    - template: _templates/liquid/ops/error.liquid
+      output: stdout
+      variables:
+        message: "Error: Slug must be between 7 and 50 characters and may only contain lowerase English letters, numerals, underscores (_), and hyphens (-)."
+  {%- endif -%}
+{% else %}
+# If we don't see a slug argument,
+- action: parse
+  builds:
+    - template: _templates/liquid/ops/error.liquid
+      output: stdout
+      variables:
+        message: "Error: You must provide arguments for slug and title! Aborting..."
+{% endif %}

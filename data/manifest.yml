@@ -1,0 +1,74 @@
+# Optional file
+# This is the clearinghouse datasource for content metadata
+# Formerly data/schema.yml in some projects, manifest.yml
+#  is the central map or index file coordinating data
+#  when necessary.
+#
+# Its structure is like so:
+#
+# pages:
+#   - slug: some-page-slug
+#     title: Some Page Title
+#     title_short: A Page
+#     guides: [one,two]
+#     categories: [cat1,cat2,cat3]
+#
+# topics:
+#   - slug: some-topic-slug
+#     title: Some Topic Title
+#     title_short: A Topic
+#     guides: [one,two]
+#     subtopics:
+#       - another-topic
+#       - yet-another-topic
+#   - slug: another-topic
+#     title: A Child Topic of Some Topic Title
+#     title_short: A Topic's Kid
+#     guides: [one]
+#   - slug: yet-another-topic
+#     title: A Child of Some Topic Title
+#     title_short: A Topic's Kid
+#     guides: [two]
+#
+## In this example, two guides are being built
+## ("one" and "two"). The page associated with
+## some-page-slug will build for both guides,
+## as will the first topic: some-topic-slug.
+## However, each "child" of some-topic-slug will
+## only build for one guide. The relationships
+## will stay tracked for both.
+## LDCMF can accommodate three tiers of nested
+## topics in portal output. Guides will either
+## 1. make child topic headers subordinate;
+## 2. string all topics sequentially as peers; or
+## 3. dump child topics into links to portal version
+## 4. anything else you want to program
+#
+#
+# categories:
+#   - slug: some-subject
+#     name: Some Broad Subject
+#     desc: Where we put stuff about Somes
+#   - slug: another-subject
+#     name: Another Broad Subject
+#     desc: Where we put stuff about Anothers
+# domains:
+#   - slug: setup
+#   - name: Setup and Installation
+#   - slug: extending
+#     name: Extending the Product
+# types:
+#   - slug: task
+#     key: t
+#   - slug: concept
+#     key: c
+#   - slug: reference
+#     key: r
+#   - slug: index
+#     key: i
+#   - slug: example
+#     key: x
+# volumes:
+## LiquiDoc Volumes are like Jekyll collections, only
+## organized in the manifest rather than the file
+## structure, for objective metadata.

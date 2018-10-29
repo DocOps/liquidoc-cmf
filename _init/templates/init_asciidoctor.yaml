@@ -1,4 +1,5 @@
 # This file contains global Asciidoctor attributes
 imagesdir: assets/images
+snippetsdir: ../snippets
 safe: 0
 icons: font

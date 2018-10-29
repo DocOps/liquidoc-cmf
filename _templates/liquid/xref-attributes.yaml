@@ -1,0 +1,13 @@
+# expects vars.guide, vars.type
+# builds _built/data/built/xrefs_<slug>.adoc
+{%- if vars.type == "portal" %}{%- assign pound = "#" -%}{%- endif -%}
+{%- assign items = pages | concat: topics -%}
+{%- for i in items -%}
+  {%- assign i_guides = "all" | split: "," -%}
+  {%- if i['guides'] -%}
+    {%- assign i_guides = i['guides'] -%}
+  {%- endif -%}
+  {%- if i_guides contains vars.guide or i_guides contains "all" %}
+xref_{{ i.slug }}: "{{i.slug}}{{pound}},{{ i.title | replace: "&", "and" }}"
+  {% endif -%}
+{%- endfor -%}

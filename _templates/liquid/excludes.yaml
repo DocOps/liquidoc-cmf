@@ -1,0 +1,23 @@
+# {% comment %}
+# This template builds a list of paths for Jekyll to ignore
+#
+# Expected parameters:
+# guide - (string) a guide slug, to indicate current guide
+# {% endcomment %}
+# File source: _templates/liquid/excludes.yaml
+# Informs Jekyll what not to render
+exclude:
+  - assets/
+  - theme/
+  - snippets/
+  - site/
+{% if vars.guide %}
+# Below this line all data is dynamically generated
+{% assign keep_topics = topics | where_exp: "item","item.guides contains vars.guide" -%}
+{%- assign keepers = keep_topics | map: "slug" -%}
+{%- for story in topics -%}
+{% unless keepers contains story.slug %}
+  - topics/{{ story.slug }}.adoc
+{%- endunless -%}
+{% endfor %}
+{% endif %}

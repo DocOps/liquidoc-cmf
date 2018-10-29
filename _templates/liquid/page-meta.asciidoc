@@ -1,0 +1,21 @@
+{% assign these_topics = topics | where_exp: "item","item.guides contains vars.guide" %}
+{% for story in these_topics %}
+// tag::{{ story.slug }}[]
+{%- capture guides -%}
+{%- for r in story.guides -%}{{ r }}{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}{%- endcapture -%}
+{%- capture categories -%}
+{%- for c in story.categories -%}{{- c -}}{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}{%- endcapture -%}
+{%- capture tags -%}
+{%- for t in story.tags -%}{{ t }}{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}{%- endcapture %}
+= {{ story.title }}
+:page-title: {{ story.title }}
+:page-permalink: {guide_site_path}/{{ story.slug }}
+:page-guides: [{{ guides }}]
+:page-categories: [{{ categories }}]
+:page-tags: [{{ tags }}]
+// end::{{ story.slug }}[]
+
+{% endfor %}

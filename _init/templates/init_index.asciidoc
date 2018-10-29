@@ -1,5 +1,17 @@
-= {{product_common_name}}
+= {{ product_suite_name }}
 
 == Maker Info
 
-include::includes/_built_company-info.adoc[]
+include::snippets/_built_company-info.adoc[]
+
+:leveloffset: +1
+
+include::pages/about.adoc[]
+
+include::topics/intro.adoc[]
+
+:leveloffset: -1
+
+= Appendices
+
+include::pages/jargon-guide.adoc[leveloffset=+1]

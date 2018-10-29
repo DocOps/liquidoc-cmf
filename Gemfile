@@ -12,7 +12,7 @@ group :asciidoctor_plugins do
   gem 'asciidoctor-diagram'
 end
 
-# gem 'jekyll'
-# group :jekyll_plugins do
-#   gem 'jekyll-asciidoc'
-# end
+gem 'jekyll'
+group :jekyll_plugins do
+  gem 'jekyll-asciidoc'
+end

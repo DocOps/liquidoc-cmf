@@ -1,0 +1,5 @@
+include::{topic_page_meta}[tags="{{vars.slug}}"]
+{%- if vars.parent %}
+
+include::../snippets/_built_container_{prod-slug}.adoc[tags="{{vars.slug}}"]
+{% endif -%}

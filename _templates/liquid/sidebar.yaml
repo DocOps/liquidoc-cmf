@@ -1,0 +1,29 @@
+# expects vars.guide from build-docs.yml
+{% assign guide = vars.guide %}
+entries:
+- title: Sidebar
+  levels: one
+  folders:
+{%- for cat in categories -%}
+{%- assign cat_found = false -%}
+{%- assign cat_topics = topics | where_exp:"item","item.categories contains cat" -%}
+{%- assign cat_role_topics = cat_topics | where_exp:"item","item.guides contains guide" -%}
+{%- for story in cat_role_topics -%}
+{%- unless cat_found -%}
+{%- assign cat_found = true %}
+    - title: {{ cat | capitalize }}
+      output: web
+      folderitems:
+{% if cat == "setup" %}
+        - title: Portal Overview
+          url: home
+          output: web
+{% endif -%}
+{%- endunless -%}
+{%- assign this_title = story.title -%}
+{%- if story.title_short -%}{%- assign this_title = story.title_short -%}{%- endif %}
+        - title: {{ this_title }}
+          url: {{ story.slug }}
+          output: web
+{% endfor -%}
+{%- endfor -%}

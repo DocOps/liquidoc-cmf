@@ -1,23 +1,73 @@
-company_name_official: We Make Code, Inc #REQUIRED
-company_name_short: WEEEMC #REQUIRED (Can duplicate official)
-product_common_name: BoxOdox #REQUIRED This is effectively the title of this docs project
-git_repo_uri: git@github.com:DocOps/liquidoc-cmf.git #REQUIRED A proper git@ address like git@github.com:DocOps/liquidoc-cmf.git
-space_type: repo #REQUIRED |
-# Use 'directory' if part of a larger product repo
-# Use 'repo' if docs are the whole repo
-project_root: # The name of the root project directory, relative to the clone point
-docs_root_path: # The relative path to docs dir relative to the project_root_path
-# Leave docs_root_path blank if the space_type is 'repo'
+# {% comment %}
+# Required file
+# This file establishes codebase configuration Settings
+# plus general company and product data.
+# It is used to generate AsciiDoc attributes.
+# {% endcomment %}
 
-company_address_street:
-company_address_city:
-company_address_state:
-company_address_zipcode:
-git_repo_web_url: # The URL of your GitHub or other interface
+# This common meta file must remain "flat" -- only simple key/value pairs allowed
+# Values may be boolean, string, numeric, or float -- no arrays or structures
+project_name: Test Proj
 
-products: # leave this field blank
-  - name: # the name of the first product documented in this repo
-    slug: # lowercase alphanumeric and hyphens (-) only, ex. super-saas-premium
-# Remove the leftmost # marks on subsequent lines to activate a new product record
-#  - name: # the name of the second product
-#    tagline: # a short description of the second product
+# The products/technologies documented by THIS docs project, as a phrase:
+project_subjects_list: This, That, the Other Thing(TM)
+
+# The proper name for the products/technologies documented, as a phrase
+# (may be same as project_subjects_list:
+product_suite_name: The Things
+
+# An optional shorter version of product_suite_name:
+product_suite_name_short: TheThings
+
+# The space_type refers to where/how THIS project resides, either:
+# * repo   | Docs have their own repository with no parent.
+# * colo   | Docs are collocated inside the product repository.
+# Note:    Docs with their own repo may contain product repos as submodules.
+#          For collocated (colo) setups, this project may have its own folder
+#           or reside in a submodule (subordinate repository).
+space_type: repo
+
+# The subj_rel defines how THIS docs repo relates to the documented subjects:
+# * parent    | Products are all submodules of the docs (recommended)
+# * submod    | Docs are in a Git submodule subordinate to all product repos
+# * folder    | Docs are in a dir w/in the (solely documented) product repo.
+# * none      | The product repo and docs repo are technically unrelated.
+# * mashup    | It's complicated.
+subj_rel: parent
+
+# THIS projet's git repo origin address
+project_git_repo_origin_uri: git@github.com:yourghuname/test-project.git
+
+# The name of the root project directory, relative to the clone point
+# By default this is the filename of your Git repo
+# Ex: repo-name.git would have a project_root_dir: repo-name.
+project_root_dir: test-project
+
+# The path to THIS project from repository root if space_type is 'colo'
+# Leave blank if the project_root_dir is the entire docs dir
+docs_root_path:
+
+# Location of THIS project's config files (LiquiDoc, Jekyll, Asciidoctor, etc):
+project_config_dir: _configs
+
+# THIS project's LiquiDoc build configuration file:
+project_config_file: build-docs.yml
+
+# The base directory into which prebuilding and final artifacts are generated
+project_build_dir: _build
+
+# The local port at which your Jekyll development instance is served
+# Conventionally in the 3000-4999 range; just avoid conflicting with
+# any other running local HTTP server
+local_serve_port: 4999
+
+# The above entries will generate project_config
+portals_base_path: portals
+
+# Company info
+company_name_official: We Make Code, Inc
+company_name_short: WEEEMC
+company_address_street: 0 Nowhere Lane
+company_address_city: Anywhereville
+company_address_state: Puerto Rico
+company_address_zipcode: 11111

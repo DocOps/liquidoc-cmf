@@ -1,0 +1,6 @@
+// TIPS
+// tag::meta-warning[]
+[TIP]
+Your docs still need a fair amount of work.
+
+// end::meta-warning[]

@@ -1,0 +1,28 @@
+# This is the Jekyll configuration file
+title: {{product_suite_name}} Portals
+description: The documentation for {{project_subjects_list}}
+output: web
+source: {{project_build_dir}}
+host: 127.0.0.1
+port: {{local_serve_port}}
+destination: site
+
+data_dir:     data
+plugins_dir:  _plugins
+layouts_dir:
+includes_dir:
+images_dir:   assets/images
+css_dir:      theme/css
+theme_common_dir: theme
+js_dir: theme/js
+
+asciidoc: {}
+asciidoctor:
+  safe: 0
+  base_dir: :docdir
+# Do NOT place attributes here when building with LiquiDoc
+# They will be loaded from other external sources
+
+
+# File management
+encoding: "utf-8"

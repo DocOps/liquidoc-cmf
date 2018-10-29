@@ -1,0 +1,28 @@
+terms:
+- term: AJYL docstack
+  def: A combination of technologies (Asciidoctor, JAMstack/Jekyll, YAML, and Liquid) ideal for managing highly complex single-sourced technical documentation needs.
+  ref: https://ajyl.org
+
+- term: AsciiDoc
+  def: Dynamic, lightweight markup language for developing rich, complex documentation projects in flat files.
+  ref: http://asciidoctor.org/docs/user-manual
+
+- term: Asciidoctor
+  def: Suite of open source tools used to process AsciiDoc markup into various rendered output formats.
+  ref: http://asciidoctor.org
+
+- term: JAMstack
+  def: A combination of technologies that establish a “modern web development architecture based on client-side JavaScript, reusable APIs, and prebuilt Markup”.
+  ref: https://jamstack.org/
+
+- term: Jekyll
+  def: A popular static-site generator capable of building entire websites out of AsciiDoc and YAML source, among other formats.
+  ref: https://jekyllrb.com/
+
+- term: Liquid
+  def: Open source templating markup language maintained by Shopify.
+  ref: https://shopify.github.io/liquid/
+
+- term: YAML
+  def: A slightly dynamic, semi-structured data format for key-value pairs and nested objects.
+  ref: http://searchitoperations.techtarget.com/definition/YAML-YAML-Aint-Markup-Language

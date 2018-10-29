@@ -1,122 +1,359 @@
+// This AsciiDoc file must be rendered to be properly viewed.
+// The easiest way to view it rendered is on GitHub at
+// https://github.com/DocOps/liquidoc-cmf
+// OR copy and paste these contents into
+// https://asciidoclive.com
+// Everthing BELOW is formatted in AsciiDoc syntax:
+// https://asciidoctor.org/docs/what-is-asciidoc/
+// NOTE:
+// Some markup in this README is intended to work with
+// files that dynamically include portions of this file
+// elsewhere in this repository or in other repos.
+// In LDCMF, README files are used for core canonical
+// information about the codebases/products they serve.
 = LiquiDoc CMF
+:subject_repo: this
+// this setting makes this file in line with parent repo
+:guide_admin: true
+:ldcmf_site_base_url: https://www.ajyl.org
+:toc: macro
 
-This repo contains the boilerplate files for, and rudimentary documentation of, a content mamanagement framework (CMF) for combining open-source tools and workflows for documentation management.
-LiquiDoc CMF (LDCMF) incorporates two excellent lightweight markup languages (link:http://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] and link:https://github.com/darvid/trine/wiki/YAML-Primer[YAML]) with open-source build and publish utilities (link:https://git-scm.com/book/en/v2/Getting-Started-Git-Basics[Git], link:http://asciidoctor.org/[Asciidoctor], link:http://idratherbewriting.com/2015/02/27/static-site-generators-start-to-displace-online-cmss/[static site generators], build and deployment tools, and many others) using a wrapper utility called link:https://github.com/briandominick/liquidoc-gem[*LiquiDoc*].
-This creates a truly open, highly portable system for developing and maintaining docs code the way programmers develop and maintain product code.
+This repo contains the bootstrapping files and instructions for a _content management framework_ (CMF) designed for documenting software applications.
+Combining open-source tools with collaborative workflows, *LiquiDoc CMF* facilitates writing, editing, coordinating, and deploying technical docs in fully extensible, Git-managed codebases.
+
+LiquiDoc CMF (*LDCMF*) incorporates two excellent lightweight markup languages (link:http://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] and link:https://github.com/darvid/trine/wiki/YAML-Primer[YAML]) with open-source build and publish utilities (link:http://asciidoctor.org/[Asciidoctor], and link:http://idratherbewriting.com/2015/02/27/static-site-generators-start-to-displace-online-cmss/[Jekyll]).
+All this is stitched together seamlessly with Liquid templating markup and coordinated by a docs build utility called link:https://github.com/DocOps/liquidoc-gem[*LiquiDoc*].
+This creates a truly open, highly portable and scalable system for developing _docs code_ the way programmers develop _product code_.
+
+toc::[]
+
+To learn much more about LiquiDoc CMF and its technology ecosystem (the “AJYL docstack”), link:{ldcmf_site_base_url}/liquidoc-cmf[check out this introduction].
+The remainder of this document assumes you wish to implement the LDCMF _framework_ for a project of your own and instructs the bootstrapping of an appropriate LDCMF environment.
 
 == Usage
 
-Complete documentation for LDCMF is still being developed.
+[IMPORTANT]
+link:{ldcmf_site_base_url}/liquidoc-cmf-guides/admin[*Complete documentation for LDCMF administration is available here.*]
 
-The following procedure is a *bootstrapping operation* to get an _actual LDCMF-based project_ started.
-It further sets up initial files based on custom preferences.
+The following procedure is a *bootstrapping operation* to get an _actual LDCMF-based project_ up and running.
+It inflates directories and sets up some initial demonstration files based on preferences you will customize.
+link:https://www.ajyl.org/liquidoc-cmf-guides/admin/setup-initialize-docs-env[More thorough setup instructions are available] and highly recommended.
 
 [WARNING]
-This file (`README.adoc`) is the README for the generic LiquiDoc CMF project bootstrap repository.
-If you wish to keep this file, move/rename it _before_ running the quickstart, which generates a proper `README.adoc` for your actual docs project/directory, which this directory and its contents then _becomes_.
+The file you are reading (`README.adoc`) is the README for the _generic LiquiDoc CMF project_ bootstrap repository.
+The procedure it instructs will convert its current generic bootstrap context into your own LDCMF project application.
+If you wish to keep this file, move/rename it _before_ running the bootstrapping _init_, since that operation generates a proper `README.adoc` for your _actual docs project_, which this directory and its contents _will then be_.
 
-If you have link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[Git] and link:https://www.ruby-lang.org/en/downloads/[Ruby runtime] installed, you can get going with LiquiDoc CMF in a few quick steps.
+If you have link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[Git] (for Windows: link:https://git-scm.com/download/win[GitBash] or a Linux emulator like link:http://www.cygwin.com/[Cygwin]) and link:https://www.ruby-lang.org/en/downloads/[Ruby runtime] installed, you can get going with LiquiDoc CMF using this guide.
 
-. Clone this repo.
+// tag::bootstrap-steps[]
+=== Establish the Environment
+
+. *Navigate to the parent directory* of your new docs directory.
++
+.Example for new project
+[source,shell]
+----
+cd Documents/workspace
+----
++
+.Example for docs inside a product project
+[source,shell]
+----
+cd Documents/workspace/my-product
+----
+
+. *Clone {subject_repo} repo.*
 +
 [subs="quotes"]
 .Example
+[source,shell]
 ----
 git clone git@github.com:DocOps/liquidoc-cmf.git *docs_dir*
 ----
 +
-Replace `docs_dir` with the directory name you want to give this directory.
+Replace `docs_dir` with the directory name you want to give this directory -- either a subdirectory of a parent project or the root directory of a new, independent repo.
 
-. Change to the project directory.
+. *Change to the project directory.*
 +
 .Example
+[source,shell]
 ----
 cd docs_dir
 ----
 
-. Re-associate your files with the proper repository.
-
-.. _If your docs project is its own Git repo_, change the project's remote origin Git repository.
+. *Re-associate your files* with the proper repository.
+[upperalpha]
+.. _If your docs project is its own Git repo_, change the boilerplate project's remote origin Git repository to your own.
 +
+.Example
+[source,shell]
 ----
 git remote set-url origin git://github.com:your-project/your-repo-name.git
 ----
 +
 Replace this URI with your own.
 
-.. _If your docs project is part of a parent directory's Git repo_, remove local Git files so your new docs source will be absorbed into the parent repo.
+.. _If your docs project is part of a parent directory's Git repo_, remove _local_ Git files (for the LDCMF repo you just cloned) so your new docs source will be absorbed into the parent repo.
 +
+.Example
+[source,shell]
 ----
 rm -rf .git
 ----
 +
 Now your new directory/files will appear as uncommitted additions to the parent project (`git status`).
 
-. Run Bundler to install dependencies.
+. *Run Bundler* to install dependencies.
 +
+[source,shell]
 ----
 bundle
 ----
 +
 If an error indicates Bundler is not installed, run `gem install bundler`, then repeat this command.
 
-. Rename this README so _init_ does not overwrite it.
+. *Rename this README* so the upcoming _init_ operation does not overwrite it.
 +
 .Example
+[source,shell]
 ----
 mv README.adoc README.meta.adoc
 ----
 +
+[NOTE]
 This file may confuse future users; we advise removing it before sharing your LDCMF project.
 
-. Edit your project metafile.
+. *Edit the metafile* for your new LDCMF project.
 +
 In your favorite text/code editor, open `data/meta.yml` and fill out the required info, then *save the file*.
 
-. Run LiquiDoc with the LDCMF initialization config.
+. *Initialize your custom environment.*
+[lowerroman]
+.. Generate an _initialization config_ based on the custom preferences in `meta.yml`.
 +
+[source,shell]
+----
+bundle exec liquidoc --template _init/templates/init.yaml --data data/meta.yml --output _init/init.yml
+----
++
+This command performs a one-off template parsing to establish the temporary _init_ config file, responding with a message that your `_init/init.yml` was built.
+
+.. Generate _infrastructure files_ using your temporary init config.
++
+[source,shell]
 ----
 bundle exec liquidoc -c _init/init.yml
 ----
 +
-This procedure customizes a few starter files based on `meta.yml`.
+This procedure builds starter files (and inflates directories).
+If your initialization steps proceeded without errors, you now have a codebase that serves as the skeleton for an LDCMF implementation, starting with a `_configs/` directory containing LiquiDoc, Asciidoctor, and Jekyll config files, as well as new `README.adoc` and `content/index.adoc` files.
+You can make changes to `data/meta.yml` and re-run the liquidoc commands until you approve of the results.
 
-. You can now review your `README.adoc` and `content/index.adoc` files, editing and populating them with custom content.
+=== Build the Docs
 
-. Delete or move the `README.meta.adoc` file (this file) and the `_init/` directory, which you will no longer need.
+. You can now *review the new `README.adoc`* file generated by this procedure. +
+The new README file is oriented toward _your LDCMF application's_ future users.
+You should maintain it as the canonical reference for working with your docs codebase.
 
-Further instructions are in your new README!
-The new README file is oriented for your project's future users (and you!), so you don't need to repeat setup steps.
-Just run your first build.
+. *Perform the first build of your seedling docset*, as instructed in the new README. +
+Check the target directory for built artifacts and review them for errors.
+
+=== Wrapup
+
+. When you're certain everything looks good, *delete the `_init/` directory*.
+
+. Move or remove `README.meta.adoc` (likely this file!). +
+Everything important from this file is available in the link:{ldcmf_site_base_url}/liquidoc-cmf-guides/admin[LDCMF Guides].
+// end::bootstrap-steps[]
+
+[TIP]
+If you are not happy with the output, you may continue running the `bundle exec liquidoc -c _init/init.yml` command to overwrite the generated files.
 
 == Structure
 
-This is the basic file directory structure of an initial LiquiDoc CMF project).
+Here is the basic directory structure of an initial LiquiDoc CMF project once the first build procedure has been carried out.
 
 [source]
 ----
-liquidoc-cmf/
+├── _build/
 ├── _configs/
-│   ├── asciidoctor.yml
-│   └── build-docs.yml
-├── data/
-│   └── meta.yml
+│   ├── asciidoctor.yml
+│   ├── build-docs.yml
+│   └── jekyll-global.yml
 ├── _templates/
-│   └── liquid/
-│       └── company.asciidoc
-├── content/
-│   ├── assets/
-│   ├── includes/
-│   ├── pages/
-│   ├── topics/
-│   └── index.adoc
-└── theme/
-README.adoc
-Gemfile
+│   └── liquid/
+├── content
+│   ├── assets/
+│   │   └── images/
+│   ├── pages/
+│   ├── snippets/
+│   └── topics/
+├── data/
+│   ├── meta.yml
+│   ├── products.yml
+│   └── schema.yml
+├── theme/
+│   ├── css/
+│   ├── fonts/
+│   ├── <custom-theme>/
+│   │   ├── _includes/
+│   │   └── _layouts/
+│   ├── js/
+│   └── pdf-theme.yml
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE
+└── README.adoc
 ----
 
+// tag::architecture-definitions[]
+_build/::
+This is where all processed files end up, including all migrated assets, prebuilt source, or final artifacts.
+This directory is _not_ tracked in source control, so you will not see it until you run a build routine, and you cannot commit changes made to it.
+It is always safe to delete this directory in your local workspace.
+We will explore the `_build/` directory more fully later.
+
+ifdef::guide_admin[]
+_configs/::
+This folder is where the brains go.
+The `build-docs.yml` config file belongs here, as does anything that is more about programming the build procedure than about informing the content.
+The `asciidoctor.yml` file is for non-content AsciiDoc attributes that pertain to the structure or process of rendering with Asciidoctor.
+This is also the home of various Jekyll configuration files, usually one for each guide and one for each guide type (e.g., `attributes-portal.yml` and `attributes-manual.yml`).
+endif::guide_admin[]
+
+_ops/::
+This is a secondary “configs” location, for utilities and routines that support the _use_ of LDCMF by admins and documentarians.
+For instance, the `init-topic.yml` config instructs the creation of topic files and schema entries.
+
+_templates/liquid/::
+Here we store most of our prebuilding templates.
+These are _not_ Jekyll theming templates.
+These are the ones we use for generating new YAML and AsciiDoc source files from other source files and external data.
+
+content/::
+The first of our publishable directories, `content/` is the base path for documentarians' main work area.
+Everything inside the `content/` directory will be copied into the `_build/` directory early in the build process.
+
+content/assets/:::
+For content assets, rather than theming assets.
+If it illustrates your product, it probably goes here.
+If it brands your company, it probably goes in `theme/assets/`.
+
+content/pages/:::
+For AsciiDoc files of the _page_ content type.
+
+content/snippets/:::
+For content _snippets_.
+
+content/topics/:::
+For AsciiDoc files of the core _topic_ content type.
+
+data/::
+All YAML small-data files that contain content-relevant information go here.
+These data files differ from those that belong in `_configs/` (or `_ops/`) in important ways, essentially revolving around whether the data needs to be available for display.
+If it is not establishing settings or used to inform non-build functions (like in `_ops/`), the data file probably belongs in `data/`.
+Let's look at some key data files standard to LDCMF.
+
+data/meta.yml:::
+For general information about your company, URL and path info.
+This file usually contains just simple data: a big (or small) column of basic key-value pairs to create simple variables.
+
+data/products.yrml:::
+For subdivided information about your products in distinct blocks.
+Each block can be called for selective ingest during build routines using the colon signifier, such as by calling `data/products.yml:product-1`, where `product-1:` is a top-level block in the `products.yml` file.
+
+data/guides.yml:::
+This block is for content-oriented data that is distinct between the different portals or guides you're producing.
+This is often redundant to your `products.yml` file, if product editions themselves are the major point of divergence in your docs, and it is formatted the same way.
+For _this project_ (LDCMF Guides), the _guides_ are oriented toward _audiences_ (documentarians, admins, and developers), but the products (LiquiDoc and LDCMF) are distinct from this and actually documented/instructed _together_ in each guide.
++
+[TIP]
+Favoring the filename `products.yml` is conventional when products and guides (portals) have a 1:1 relationship and `guides.yml` file is superfluous.
+
+data/manifest.yml:::
+This crucial file provides a central manifest of all page-forming content items (pages, topics).
+It dictates how they are organized in the site navigation (using metadata such as categories into which content items fall).
+The schema file carries essential build info that lets us see relationships between topics and build content-exclusive portals from otherwise-decontextualized repositories.
+Sometimes `data/schema.yml`, deprecated in favor of `manifest.yml`.
+
+data/terms.yml:::
+By no means a required file, `terms.yml` is a great example of a file that is really just for content.
+You can have as many of these key-value files, serving whatever purposes you wish.
+
+products/::
+This is an optional path for LDCMF projects.
+If you plan to embed your product repos as submodules, put them in the `products/` directory.
+Submodules are like shortcuts to those embedded repositories -- if you navigate into them, you can perform Git operations.
+Submodules are typically used to ensure product repos are reliably available and properly checked out, generally in order to support migrating files into the build directory.
+
+theme/::
+All the files that structure your output displays go here.
+This mainly includes Jekyll templates (`themes/<theme-name>/_includes/` and `themes/<theme-name>/_layouts/`) and asset files such as stylesheets, front-end javascripts, and of course theme-related images.
+This would also be the home of PDF and slideshow output theme configurations, as applicable.
+
+theme/pdf-theme.yml:::
+A very basic PDF theming file based on Asciidoctor's link:https://github.com/asciidoctor/asciidoctor-pdf/blob/master/data/themes/default-theme.yml[*default-theme.yml*], just to get you started.
+For more about PDF theming, see the link:https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc[Asciidoctor PDF Theming Guide].
+// end::architecture-definitions[]
+
+== Build Config
+
+The `_configs/build-docs.yml` file is the brains of any LDCMF application.
+It defines the sequential compilation routine and ensures all assets are in place for the final artifact rendering operations.
+
+=== LDCMF Build Strategies
+// tag::build-strategies[]
+The strength of LiquiDoc CMF its ability to maintain strictly “DRY” single sourcing while still producing diverse output.
+These strategic principles are key to maintaining this capability.
+
+Store small data in flat files.::
+When we talk about _product metadata_, we are referring to information _about_ a software product, not any kind of data stored by that product.
+Consider what data matters about products: capacities, dependencies, options, integrations, and anything classifiable as metadata, including information about the product developer.
+Then consider how these things change as products evolve -- every version has its own array of the above attributes, and the list can only be expected to grow and morph.
+Data of this kind is -- *small data* -- *is not best stored in relational databases*; version control is essential and schemas get in the way, especially since none of the data is served live.
+If you want to keep your product info in Git, use appropriate flat-file formats for various representations.
+The human-friendliest formats are probably *YAML* and *CSV*.
+YAML can be edited in any decent code editor, and a comma-separated values file can be edited in any spreadsheet application.
+
+Share product data with the product.::
+Ideally, that small data stored in flat files should be kept in one canonical place, from which it is read by the docs and the product build routines, ensuring docs references reflect the current truth about the product.
+
+Prebuild and include complex reference content.::
+All that small data needs to make it into your docs in a more human-readable format.
+This is where prebuilding reference content to AsciiDoc source comes in.
+Use Liquid templates to generate includable AsciiDoc files into the `_build/snippets/` directory.
+Then include them into your static AsciiDoc files.
+
+Handle major divergence by configuring output into “guides”.::
+When there are major points of divergence in output requirements -- such as significantly different “editions” of the same product or highly variant audiences, like basic vs advanced users or consumers vs developers -- each splinter necessitates its own _guide_.
+In these cases, you want to direct users to the appropriate docset, as well as make it easy for those who land in the wrong guide to switch to a similar place in the parallel guide.
+Guides are built sequentially, each drawing configuration settings and content designated for it, along with content and data common to other guides.
+This process generates parallel guides, including Web portals that are built side by side and served as components of one site.
+
+Handle output-format diversity with “portals” and “manuals”.::
+A lot of the conflict in documentation output stems from the manuals vs portals debate.
+Modern websites tend to work best by presenting content in semi-serialized or unserialized article format, more like Wikipedia than a book.
+Meanwhile, technical documentation is often still intended to be consumed more like a book or a traditional manual.
+LDCMF tries to balance both without requiring either, but each final rendering action is technically building either a book-style _manual_ or a help-site/wiki-style _portal_.
++
 [NOTE]
-Empty directories (ex., `content/assets/`) must be manually added.
+.Coming Soon
+JavaScript-driven slide presentations!
+
+[[rule-no-built-files]]
+Maintain no built files in source control.::
+If a file is the product of data from other source files, generate that file at build time, and do not commit it to source.
+This means keeping an ignored build directory (conventionally `_build/`), and everything outside that path should be unique.
++
+[NOTE]
+Exceptions to this rule include _init_ and _ops_ routines, configured to instruct LiquiDoc to generate useful files.
+The rule pertains to content files generated at build time, not files manually generated during setup or while creating new content.
+
+Keep functional code out of AsciiDoc source::
+Perform heavy processing up front as prebuilding, then include those prebuilt files during render phases.
+While jekyll-asciidoc enables Liquid preprocessing in AsciiDoc files, LDCMF prefers prebuilding so the generated files can service more than Jekyll builds.
+// end::build-strategies[]
 
 == Contributing
 

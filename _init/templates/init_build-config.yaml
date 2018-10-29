@@ -1,0 +1,35 @@
+# Move critical files to the temporary build directory
+- action: migrate
+  source: content/
+  target: _build/
+  options:
+    inclusive: false # Duplicate the files without the content/ dir
+- action: migrate
+  source: theme/
+  target: _build/
+# Prebuild includable files
+- action: parse
+  data: data/terms.yml
+  builds:
+    - output: _build/snippets/_built_terms.adoc
+      template: _templates/liquid/terms.asciidoc
+- action: parse
+  data: data/meta.yml
+  builds:
+    - output: _build/snippets/_built_company-info.adoc
+      template: _templates/liquid/company-info.asciidoc
+# Render your publication with Asciidoctor
+- action: render
+  source: _build/index.adoc
+  data:
+    - _configs/asciidoctor.yml
+    - data/meta.yml
+  builds:
+    - output: _build/docs/docs.html
+      doctype: book
+    - output: _build/docs/docs.pdf
+      doctype: book
+# Migrations in preparation for deploy
+- action: migrate
+  source: _build/assets/
+  target: _build/docs/

@@ -1,0 +1,5 @@
+= About These Docs
+
+This is boilerplate content to demonstrate a LiquiDoc CMF build.
+
+include::{snippetsdir}/snippets-misc.adoc[tags="meta-warning"]

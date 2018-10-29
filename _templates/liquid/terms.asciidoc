@@ -1,0 +1,6 @@
+{% for t in terms %}
+// tag::{{ t.term | slugify }}[]
+{{t.term}}::
+{{t.def}}{% if t.ref %} link:{{ref}}[(Resource)]{% endif %}
+// end::{{ t.term | slugify }}[]
+{% endfor %}

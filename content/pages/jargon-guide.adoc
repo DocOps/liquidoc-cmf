@@ -1,0 +1,5 @@
+= Jargon Guide
+
+This is the full list of specialized terms used in this product documentation.
+
+include::{snippetsdir}/_built_terms.adoc[]

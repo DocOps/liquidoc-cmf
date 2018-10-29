@@ -1,0 +1,14 @@
+- action: parse
+  data:
+    file: data/meta.yml
+  builds:
+    - output: README.adoc
+      template: _init/templates/init_readme.asciidoc
+    - output: content/index.adoc
+      template: _init/templates/init_index.asciidoc
+    - output: {{project_config_dir}}/{{project_config_file}}
+      template: _init/templates/init_build-config.yaml
+    - output: {{project_config_dir}}/jekyll-global.yml
+      template: _init/templates/init_jekyll-global.yaml
+    - output: {{project_config_dir}}/asciidoctor.yml
+      template: _init/templates/init_asciidoctor.yaml
