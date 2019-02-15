@@ -289,7 +289,7 @@ Submodules are typically used to ensure product repos are reliably available and
 
 theme/::
 All the files that structure your output displays go here.
-This mainly includes Jekyll templates (`themes/<theme-name>/_includes/` and `themes/<theme-name>/_layouts/`) and asset files such as stylesheets, front-end javascripts, and of course theme-related images.
+This mainly includes Jekyll templates (`theme/<theme-name>/_includes/` and `theme/<theme-name>/_layouts/`) and asset files such as stylesheets, front-end javascripts, and of course theme-related images.
 This would also be the home of PDF and slideshow output theme configurations, as applicable.
 
 theme/pdf-theme.yml:::
