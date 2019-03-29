@@ -7,9 +7,6 @@
 // BELOW is all AsciiDoc formatting:
 // https://asciidoctor.org/docs/what-is-asciidoc/
 //
-// Document attributes (variables)
-:docs_build_command_basic: bundle exec liquidoc -c {{ project_config_dir }}/{{ project_config_file }}
-//
 // Document content
 This documentation {{ space_type }} uses a docs-as-code framework called link:https://www.ajyl.org/liquidoc-cmf[LiquiDoc CMF].
 
@@ -58,9 +55,9 @@ If Bundler is not installed, run `gem install bundler`, then repeat this command
 
 ==== Generation
 
-[source,shell,subs="+attributes"]
+[source,shell]
 ----
-{docs_build_command_basic}
+bundle exec liquidoc -c {{ project_config_dir }}/{{ project_config_file }}
 ----
 
 This procedure generates files in the `_build/docs/` directory.
