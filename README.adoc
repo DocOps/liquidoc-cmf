@@ -112,6 +112,10 @@ bundle
 ----
 +
 If an error indicates Bundler is not installed, run `gem install bundler`, then repeat this command.
++
+[TIP]
+This process generates a `Gemfile.lock` file, which you will want to track in Git.
+Whenever your Liquidoc or your application require different versions of such upstream gems, maintain `Gemfile.lock` in source control as a means of ensuring all users develop with the settings that will be passed on to production.
 
 . *Rename this README* so the upcoming _init_ operation does not overwrite it.
 +
